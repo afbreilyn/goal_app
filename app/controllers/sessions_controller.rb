@@ -7,9 +7,10 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password])
+
     if @user
       sign_in!(@user)
-      redirect_to root_url
+      redirect_to user_url(@user)
     else
       flash.now[:errors] = ["Invalid username/password combo. You stupid."]
       render :new

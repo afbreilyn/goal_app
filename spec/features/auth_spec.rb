@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
 
 feature "the signup process" do
 
@@ -43,17 +45,44 @@ end
 
 feature "logging in" do
 
+  DatabaseCleaner.clean
+  user = FactoryGirl.build(:user)
+  user.save!
+
+  before(:each) do
+    visit new_session_url
+    fill_in 'Username', :with => user.username
+    fill_in 'Password', :with => user.password
+    click_on "Submit"
+  end
+
   it "shows username on the homepage after login" do
+    visit new_session_url
+    fill_in 'Username', :with => user.username
+    fill_in 'Password', :with => user.password
+    click_on "Submit"
+    expect(page).to have_content "andrew"
   end
 
 end
 
 feature "logging out" do
+  DatabaseCleaner.clean
+  user = FactoryGirl.build(:user)
+  user.save!
 
   it "begins with logged out state" do
+    visit root_url
+    expect(page).to have_content("Sign In")
   end
 
   it "doesn't show username on the homepage after logout" do
+    visit new_session_url
+    fill_in 'Username', :with => user.username
+    fill_in 'Password', :with => user.password
+    click_on "Submit"
+    click_on "Sign Out"
+    expect(page).not_to have_content(user.username)
   end
 
 end
