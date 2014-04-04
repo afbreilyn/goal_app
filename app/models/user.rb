@@ -13,6 +13,13 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
 
+  has_many(
+    :comments,
+    class_name: "UserComment",
+    foreign_key: :user_id,
+    inverse_of: :user
+  )
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return user if user.is_password?(password)

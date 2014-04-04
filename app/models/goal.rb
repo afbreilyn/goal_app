@@ -9,4 +9,11 @@ class Goal < ActiveRecord::Base
     inverse_of: :goals
   )
 
+  has_many(
+    :comments,
+    class_name: "GoalComment",
+    foreign_key: :goal_id,
+    inverse_of: :goal
+  )
+
 end
