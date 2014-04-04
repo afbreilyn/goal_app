@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_token
 
+  has_many(
+    :goals,
+    inverse_of: :user
+  )
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return user if user.is_password?(password)

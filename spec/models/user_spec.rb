@@ -11,6 +11,8 @@ describe User do
   it { should validate_uniqueness_of(:username)}
   it { should validate_uniqueness_of(:token)}
 
+  it { should have_many(:goals) }
+
   it "should ensure session token" do
     user = FactoryGirl.build(:user)
 
