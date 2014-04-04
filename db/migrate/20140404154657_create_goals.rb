@@ -5,10 +5,11 @@ class CreateGoals < ActiveRecord::Migration
       t.text :body
       t.integer :user_id
       t.date :due_date
-      t.boolean :completed?
-      t.boolean :public?
+      t.boolean :completed, default: false
+      t.boolean :public
 
       t.timestamps
     end
+
   end
 end

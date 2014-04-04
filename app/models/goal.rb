@@ -1,6 +1,7 @@
 class Goal < ActiveRecord::Base
 
   validates :title, presence: true
+  validates :public, inclusion: [true, false]
   validates :user, presence: true
 
   belongs_to(

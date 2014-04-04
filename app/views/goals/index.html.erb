@@ -1,0 +1,9 @@
+<h2>All Public Goals</h2>
+
+<ul>
+  <% @goals.each do |goal| %>
+  <li>
+    <a href="<%= goal_url(goal) %>"><%= goal.title %></a>
+  </li>
+  <% end %>
+</ul>

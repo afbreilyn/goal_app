@@ -11,6 +11,10 @@
 <% if signed_in? %>
   <%= button_to "Sign Out", session_url, method: "delete" %>
   Signed in as: <%= current_user.username %>
+  <br>
+  <a href="<%= user_url(current_user) %>">My Home Page</a>
+  <br>
+  <a href="<%= goals_url %>">All Public Goals</a>
 <% else %>
   <%= link_to "Sign In", new_session_url %>&nbsp;
   <%= link_to "Sign Up", new_user_url %>

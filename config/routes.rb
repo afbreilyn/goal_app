@@ -1,7 +1,10 @@
 ThingsToDo::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    resources :goals
+  end
   resource :session
+  resources :goals
 
   root to: "users#show"
 

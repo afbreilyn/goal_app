@@ -1,2 +1,12 @@
 <h1>Welcome. You made it!</h1>
 
+<a href="<%= new_goal_url %>">Create New Goal</a>
+<br>
+Goals:
+<ul>
+  <% current_user.goals.each do |goal| %>
+  <li>
+    <a href="<%= goal_url(goal) %>"><%= goal.title %></a>
+  </li>
+  <% end %>
+</ul>

@@ -1,0 +1,11 @@
+<h2>Check out this goal!</h2>
+<hr>
+
+<h3><%= @goal.title %> !!!!!!!!!!</h3>
+<br>
+<h2><%= @goal.body %></h2>
+
+<hr>
+<h2> <%= link_to "Edit Goal", edit_user_goal_url(current_user, @goal) %> </h2>
+<h2> <%= link_to "All Goals", goals_url %> </h2>
+<h2> <%= link_to "My Goals", user_url(current_user) %> </h2>
