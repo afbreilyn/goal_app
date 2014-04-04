@@ -10,25 +10,32 @@ feature "the signup process" do
   feature "signing up a user" do
     it "shows username on the homepage after signup" do
       visit new_user_url
-      fill_in 'username', :with => "jonathan"
-      fill_in 'password', :with => "sennacy"
+      fill_in 'Username', :with => "jonathan"
+      fill_in 'Password', :with => "sennacy"
       click_on "Sign Up"
     end
   end
 
-  scenario "user uses invalid credential" do
+  feature "user uses invalid credential" do
+    #user = FactoryGirl.build(:user, :username => "", :password => "" )
+
     before(:each) do
-      fill_in 'username', :with => ""
-      fill_in 'password', :with => ""
-      click_on "Sign Up"
+      visit new_user_url
+      fill_in 'Username', :with => ""
+      fill_in 'Password', :with => ""
+      click_on "Submit"
     end
 
-    it "should flash errors" do
-      expect(page).to have_content "can't be blank"
+    it "shouldn't let username be blank" do
+      expect(page).to have_content "Username can't be blank"
+    end
+
+    it "shouldn't let password be less than 6 characters" do
+      expect(page).to have_content "Password is too short"
     end
 
     it "should rerender page" do
-      expect(page).to have_contect "Sign Up"
+      expect(page).to have_content "Sign Up"
     end
   end
 

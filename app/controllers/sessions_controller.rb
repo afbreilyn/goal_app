@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       params[:user][:username],
       params[:user][:password])
     if @user
-      log_in!(@user)
+      sign_in!(@user)
       redirect_to root_url
     else
       flash.now[:errors] = ["Invalid username/password combo. You stupid."]
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out!
+    sign_out!
     redirect_to new_session_url
   end
 
