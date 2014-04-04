@@ -2,9 +2,15 @@ ThingsToDo::Application.routes.draw do
 
   resources :users do
     resources :goals
+    resources :comments
   end
+
   resource :session
-  resources :goals
+  resources :goals do
+    resources :comments
+  end
+
+  resources :comments
 
   root to: "users#show"
 

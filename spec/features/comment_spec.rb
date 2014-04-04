@@ -22,7 +22,7 @@ feature "when signed in" do
     it "shows shows the goal show page on submit" do
       fill_in 'Comment', with: "Great Comment!"
       click_button 'Add Comment'
-      page.should have_content 'My First Goal'
+      page.should have_content 'Great Comment!'
     end
 
     it "adds the comment to the list of comments on the goal show page on submit" do
@@ -47,7 +47,7 @@ feature "when signed in" do
     it "shows shows the user's show page on submit" do
       fill_in 'Comment', with: "Great Comment!"
       click_button 'Add Comment'
-      page.should have_content 'My First Goal'
+      page.should have_content 'Great Comment!'
     end
 
     it "adds the comment to the list of comments on the user's show page on submit" do
@@ -57,5 +57,5 @@ feature "when signed in" do
     end
   end
 
-
 end
+

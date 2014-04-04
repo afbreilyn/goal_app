@@ -13,3 +13,27 @@ Goals:
 
 <br>
 
+<h4>Comments:</h4>
+<ul>
+  <% @user.comments.each do |comment| %>
+  <li>
+    <%= comment.body %>
+  </li>
+  <% end %>
+
+</ul>
+
+
+<br>
+<form action="<%= user_comments_url(@user) %>" method="post">
+
+    <%= auth_token %>
+
+    <label>
+      Add Comment
+      <input type="text" name="comment[body]">
+    </label>
+    <br>
+
+    <input type="submit" value="Add Comment">
+</form>

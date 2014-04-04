@@ -46,7 +46,7 @@ def sign_up(username)
   visit "/users/new"
   fill_in "Username", with: username
   fill_in "Password", with: 'abcdef'
-  click_button 'Sign Up'
+  click_button 'Submit'
 end
 
 def sign_up_as_hello_world
@@ -57,19 +57,18 @@ def sign_in(username)
   visit "/session/new"
   fill_in "Username", with: username
   fill_in "Password", with: 'abcdef'
-  click_button 'Sign In'
+  click_button 'Submit'
 end
 
 def make_goal(title = nil, body = nil)
   title ||= "My First Post"
   body ||= "The body of a post is rad."
-  user_id ||= current_user.id
 
   visit "/goals/new"
   fill_in 'Title', with: title
   fill_in 'Body', with: body
   choose 'Public'
-  click_button "Create New Goal"
+  click_button "Submit"
 end
 
 def add_comment

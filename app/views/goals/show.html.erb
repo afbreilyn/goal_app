@@ -10,3 +10,27 @@
 <h2> <%= link_to "All Goals", goals_url %> </h2>
 <h2> <%= link_to "My Goals", user_url(current_user) %> </h2>
 <h2> <%= link_to "User's Page", user_url(@goal.user) %> </h2>
+
+
+<ul>
+  <% @goal.comments.each do |comment| %>
+  <li>
+    <%= comment.body %>
+  </li>
+  <% end %>
+
+</ul>
+
+<br>
+<form action="<%= goal_comments_url(@goal) %>" method="post">
+
+    <%= auth_token %>
+
+    <label>
+      Add Comment
+      <input type="text" name="comment[body]">
+    </label>
+    <br>
+
+    <input type="submit" value="Add Comment">
+</form>

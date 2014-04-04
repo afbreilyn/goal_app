@@ -9,4 +9,6 @@ class Goal < ActiveRecord::Base
     inverse_of: :goals
   )
 
+  has_many :comments, as: :commentable
+
 end
