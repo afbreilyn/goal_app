@@ -41,3 +41,38 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def sign_up(username)
+  visit "/users/new"
+  fill_in "Username", with: username
+  fill_in "Password", with: 'abcdef'
+  click_button 'Sign Up'
+end
+
+def sign_up_as_hello_world
+  sign_up("hello_world")
+end
+
+def sign_in(username)
+  visit "/session/new"
+  fill_in "Username", with: username
+  fill_in "Password", with: 'abcdef'
+  click_button 'Sign In'
+end
+
+def make_goal(title = nil, body = nil)
+  title ||= "My First Post"
+  body ||= "The body of a post is rad."
+  user_id ||= current_user.id
+
+  visit "/goals/new"
+  fill_in 'Title', with: title
+  fill_in 'Body', with: body
+  choose 'Public'
+  click_button "Create New Goal"
+end
+
+def add_comment
+  fill_in 'Body', with: 'commenterific'
+  click_button 'Add Comment'
+end

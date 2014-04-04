@@ -9,3 +9,4 @@
 <h2> <%= link_to "Edit Goal", edit_user_goal_url(current_user, @goal) %> </h2>
 <h2> <%= link_to "All Goals", goals_url %> </h2>
 <h2> <%= link_to "My Goals", user_url(current_user) %> </h2>
+<h2> <%= link_to "User's Page", user_url(@goal.user) %> </h2>
